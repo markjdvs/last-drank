@@ -13,14 +13,11 @@ const src = 'src';
 const dist = 'public';
 
 function reportError(error) {
-  // Trigger Mac OS notification
   notify({
     title: `Task Failed [${error.plugin}]`,
     message: 'Check the console.'
   }).write(error);
-  // Log the error in the terminal
   console.log(error.toString());
-  // Prevents having to restart Gulp after a crash
   this.emit('end');
 }
 
