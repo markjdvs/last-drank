@@ -73,6 +73,23 @@ function twistsEdit(req, res, next) {
     .catch(next);
 }
 
+function twistsUpdate(req, res, next) {
+  Cocktail
+    .findById(req.params.id)
+    .then((cocktail) => {
+      if(!cocktail) return res.notFound();
+
+      for(const field in req.body) {
+        cocktail[field] = req.body[field];
+      }
+
+      return cocktail.save();
+    })
+    .then((cocktail) => res.redirect(`/cocktail/${cocktail.id}`))
+    .catch(next);
+}
+
+
 function twistsDelete(req, res, next) {
   Cocktail
     .findById(req.params.id)
@@ -93,6 +110,7 @@ module.exports = {
   newTwist: twistsNew,
   createTwist: twistsCreate,
   editTwist: twistsEdit,
+  updateTwist: twistsUpdate,
   showTwist: twistsShow,
   deleteTwist: twistsDelete
 };

@@ -32,6 +32,9 @@
           <p><%= twist.recipe %></p>
         </div>
       </a>
+      <% if(locals.isAuthenticated && twist.madeBy(user)) { %>
+        <a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/edit">Edit Twist</a>
+      <% } %>
     <% }) %>
 
 </div>

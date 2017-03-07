@@ -1,24 +1,32 @@
 <div class="row">
   <h4>Twist Edit</h4>
-  <form method="PUT" action="/cocktails/<%= cocktail.id %>/:twistId">
-    <input type="text" name="name" placeholder="Name">
-    <input type="text" name="image" placeholder="Image File">
-    <textarea name="recipe" id="recipe" placeholder="Recipe"></textarea>
+  <form method="PUT" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="<%= twist.name %>">
+
+    <label for="">Image</label>
+    <input type="file" name="image" id="image" value="<%= twist.image %>">
+
+    <label for="recipe">Recipe</label>
+    <textarea name="recipe" id="recipe" value="<%= twist.recipe %>"></textarea>
 
     <label for="sweet">Sweet</label>
     <select name="sweet">
+      <option selected type="number" name="sweet" value="<%= twist.sweet %>"></option>
       <option type="number" name="sweet" value="0">0</option>
       <option type="number" name="sweet" value="1">1</option>
       <option type="number" name="sweet" value="2">2</option>
     </select>
     <label for="tart">Tart</label>
     <select name="tart">
+      <option selected type="number" name="sweet" value="<%= twist.tart %>"></option>
       <option type="number" name="tart" value="0">0</option>
       <option type="number" name="tart" value="1">1</option>
       <option type="number" name="tart" value="2">2</option>
     </select>
     <label for="bitter">Bitter</label>
     <select name="bitter">
+      <option selected type="number" name="sweet" value="<%= twist.bitter %>"></option>
       <option type="number" name="bitter" value="0">0</option>
       <option type="number" name="bitter" value="1">1</option>
       <option type="number" name="bitter" value="2">2</option>

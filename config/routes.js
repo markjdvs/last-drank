@@ -21,7 +21,11 @@ router.route('/cocktails/:id/twists')
 
 router.route('/cocktails/:id/twists/:twistId')
   .get(secureRoute, cocktails.showTwist)
+  .put(secureRoute, cocktails.updateTwist)
   .delete(secureRoute, cocktails.deleteTwist);
+
+router.route('/cocktails/:id/twists/:twistId/edit')
+  .get(secureRoute, cocktails.editTwist);
 
 router.route('/register')
   .get(registrations.new)

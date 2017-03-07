@@ -1,14 +1,14 @@
 <div class="row">
   <h4>Twist it!</h4>
-  <form method="POST" action="/cocktails/<%= cocktail.id %>/twists">
+  <form method="POST" action="/cocktails/<%= cocktail.id %>/twists" enctype="multipart/form-data">
     <label for="name">Name</label>
     <input type="text" name="name" id="name">
 
-    <label for="image"></label>
+    <label for="">Image</label>
     <input type="file" name="image" id="image">
 
-    <label for="recipe"></label>
-    <textarea name="recipe" id="recipe" id="recipe">Your instructions!</textarea>
+    <label for="recipe">Recipe</label>
+    <textarea name="recipe" id="recipe"></textarea>
 
     <label for="sweet">Sweet</label>
     <select name="sweet">
