@@ -11,8 +11,7 @@ router.route('/cocktails')
   .get(secureRoute, cocktails.indexCocktail);
 
 router.route('/cocktails/:id')
-  .get(secureRoute, cocktails.showCocktail)
-  .get(secureRoute, cocktails.showTwist);
+  .get(secureRoute, cocktails.showCocktail);
 
 router.route('/cocktails/:id/twists/new')
   .get(secureRoute, cocktails.newTwist);
