@@ -15,12 +15,23 @@
   </div>
 
 </div>
-
-
 <div>
-  <% cocktail.twists.forEach((twist) => { %>
-    <p><%= twist.name %></p>
-  <% }) %>
-
+  <hr>
   <a href="/cocktails/<%= cocktail.id %>/twists/new">New Twist</a>
+  <hr>
+</div>
+
+<div class="row">
+    <% cocktail.twists.forEach((twist) => { %>
+      <a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %> ">
+        <div class="col-sm-6">
+          <img class="img-fluid" src="/assets/images/<%= twist.image %>" alt="<%= twist.name %>">
+        </div>
+        <div class="col-sm-6">
+          <p><%= twist.name %></p>
+          <p><%= twist.recipe %></p>
+        </div>
+      </a>
+    <% }) %>
+
 </div>

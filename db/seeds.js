@@ -27,17 +27,6 @@ User
         bitter: 1,
         recipe: 'Place sugar in an Old Fashioned glass. Douse with bitters and add a few drops of water. Add whiskey and stir until sugar is dissolved. Add several large ice cubes and stir rapidly with a bar spoon to chill. Garnish, if you like, with a slice of orange and/or a cherry.',
         image: 'of.jpg',
-        twist: [ {
-          name: 'brooklyn',
-          recipe: 'Bleurgh',
-          image: 'd',
-          sweet: 1,
-          tart: 0,
-          bitter: 1,
-          createdBy: users[0],
-          mainSpirit: [],
-          otherIngredients: []
-        }],
         mainSpirits: ['Bourbon']
       }, {
         name: 'Margarita',

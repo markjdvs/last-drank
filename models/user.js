@@ -1,11 +1,20 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const s3 = require('../lib/s3');
 
 const userSchema = new mongoose.Schema({
   username: { type: String },
   email: { type: String },
-  password: { type: String, required: true }
+  password: { type: String },
+  image: { type: String }
 });
+
+userSchema
+  .virtual('imageSRC')
+  .get(function getImageSRC() {
+    if(!this.image) return null; //could put a placeholder image in here like a blank face
+    return `https://s3-eu-west-1.amazonaws.com/wdi-25-full-stack-app/${this.image}`;
+  });
 
 userSchema
   .virtual('passwordConfirmation')
@@ -26,6 +35,10 @@ userSchema.pre('save', function hashPassword(next) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
   }
   next();
+});
+
+userSchema.pre('remove', function removeImage(next) {
+  s3.deleteObject({ Key: this.image }, next); //amazon calls files objects, folders buckets
 });
 
 userSchema.methods.validatePassword = function validatePassword(password) {

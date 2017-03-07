@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const s3 = require('../lib/s3');
 
 // const commentSchema = new mongoose.Schema({
 //   content: { type: String, required: true },
@@ -38,9 +39,13 @@ const cocktailSchema = new mongoose.Schema({
   twists: [ twistSchema ],
   image: { type: String },
   // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  // comments: [ commentSchema ],
   mainSpirit: [],
   otherIngredients: []
 });
+
+cocktailSchema.pre('remove', function removeImage(next) {
+  s3.deleteObject({ Key: this.image }, next);
+});
+
 
 module.exports = mongoose.model('Cocktail', cocktailSchema);
