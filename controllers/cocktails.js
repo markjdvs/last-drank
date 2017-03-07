@@ -52,6 +52,7 @@ function twistsCreate(req, res, next) {
 function twistsShow(req, res, next) {
   Cocktail
     .findById(req.params.id)
+    .populate('comments.createdBy')
     .exec()
     .then((cocktail) => {
       if(!cocktail) return res.notFound();
@@ -85,7 +86,7 @@ function twistsUpdate(req, res, next) {
 
       return cocktail.save();
     })
-    .then((cocktail) => res.redirect(`/cocktail/${cocktail.id}`))
+    .then((cocktail) => res.redirect(`/cocktails/${cocktail.id}`))
     .catch(next);
 }
 
@@ -104,6 +105,26 @@ function twistsDelete(req, res, next) {
     .catch(next);
 }
 
+function commentCreate(req, res, next) {
+
+  req.body.createdBy = req.user;
+
+  Cocktail
+    .findById(req.params.id)
+    .exec()
+    .then((cocktail) => {
+      if(!cocktail) return res.notFound();
+
+      cocktail.comments.push(req.body); // create an embedded record
+      // now we only need to save the hotel, not the comments model as we don't have one
+      return cocktail.save();
+
+    })
+    .then((cocktail, twist) => res.redirect(`/cocktails/${cocktail.id}/twists/${twist.id}`))
+    .catch(next);
+}
+
+
 module.exports = {
   indexCocktail: cocktailsIndex,
   showCocktail: cocktailsShow,
@@ -112,5 +133,6 @@ module.exports = {
   editTwist: twistsEdit,
   updateTwist: twistsUpdate,
   showTwist: twistsShow,
-  deleteTwist: twistsDelete
+  deleteTwist: twistsDelete,
+  createComment: commentCreate
 };

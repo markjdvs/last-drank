@@ -3,6 +3,7 @@ const router = require('express').Router();
 const registrations = require('../controllers/registrations');
 const sessions = require('../controllers/sessions');
 const cocktails = require('../controllers/cocktails');
+const oauth = require('../controllers/oauth');
 const secureRoute = require('../lib/secureRoute');
 
 router.get('/', (req, res) => res.render('statics/index'));
@@ -27,6 +28,9 @@ router.route('/cocktails/:id/twists/:twistId')
 router.route('/cocktails/:id/twists/:twistId/edit')
   .get(secureRoute, cocktails.editTwist);
 
+router.route('/cocktails/:id/twists/:twistId/comments')
+  .post(secureRoute, cocktails.createComment);
+
 router.route('/register')
   .get(registrations.new)
   .post(registrations.create);
@@ -37,6 +41,12 @@ router.route('/login')
 
 router.route('/logout')
   .get(sessions.delete);
+
+router.route('/oauth/github')
+  .get(oauth.github);
+
+router.route('/oauth/facebook')
+  .get(oauth.facebook);
 
 router.all('*', (req, res) => res.notFound());
 

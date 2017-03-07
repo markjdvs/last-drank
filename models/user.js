@@ -6,14 +6,17 @@ const userSchema = new mongoose.Schema({
   username: { type: String },
   email: { type: String },
   password: { type: String },
-  image: { type: String }
+  profileImage: { type: String },
+  facebookId: { type: String },
+  githubId: { type: Number }
 });
 
 userSchema
   .virtual('imageSRC')
   .get(function getImageSRC() {
-    if(!this.image) return null; //could put a placeholder image in here like a blank face
-    return `https://s3-eu-west-1.amazonaws.com/wdi-25-full-stack-app/${this.image}`;
+    if(!this.profileImage) return null;
+    if(this.profileImage.match(/^http/)) return this.profileImage;
+    return `https://s3-eu-west-1.amazonaws.com/wdi-25-full-stack-app/${this.profileImage}`;
   });
 
 userSchema
@@ -23,7 +26,7 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this.password && !this.githubId) {
+  if(!this.password && !this.githubId  && !this.facebookId) {
     this.invalidate('password', 'required');
   }
   if(this.isModified('password') && this._passwordConfirmation !== this.password) this.invalidate('passwordConfirmation', 'does not match');
@@ -38,7 +41,7 @@ userSchema.pre('save', function hashPassword(next) {
 });
 
 userSchema.pre('remove', function removeImage(next) {
-  s3.deleteObject({ Key: this.image }, next); //amazon calls files objects, folders buckets
+  s3.deleteObject({ Key: this.image }, next);
 });
 
 userSchema.methods.validatePassword = function validatePassword(password) {

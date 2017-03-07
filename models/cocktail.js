@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 const s3 = require('../lib/s3');
 
-// const commentSchema = new mongoose.Schema({
-//   content: { type: String, required: true },
-//   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
-// }, {
-//   timestamps: true
-// });
-//
-// commentSchema.methods.madeBy = function madeBy(user) {
-//   return this.createdBy.id === user.id;
-// }
+const commentSchema = new mongoose.Schema({
+  content: { type: String, required: true },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+}, {
+  timestamps: true
+});
+
+commentSchema.methods.madeBy = function madeBy(user) {
+  return this.createdBy.id === user.id;
+};
 
 const twistSchema = new mongoose.Schema({
   name: { type: String },
@@ -19,7 +19,7 @@ const twistSchema = new mongoose.Schema({
   sweet: { type: Number },
   tart: { type: Number },
   bitter: { type: Number },
-  // comments: [ commentSchema ],
+  comments: [ commentSchema ],
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   mainSpirit: [],
   otherIngredients: []

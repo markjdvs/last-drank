@@ -1,7 +1,8 @@
 const User = require('../models/user');
+const oauth = require('../config/oauth');
 
 function sessionsNew(req, res) {
-  res.render('sessions/new');
+  res.render('sessions/new', { oauth });
 }
 
 function sessionsCreate(req, res, next) {
@@ -25,7 +26,7 @@ function sessionsCreate(req, res, next) {
 }
 
 function sessionsDelete(req, res) {
-  req.flash('danger', 'You have logged out.')
+  req.flash('danger', 'You have logged out.');
   req.session.regenerate(() => res.redirect('/login'));
 }
 
