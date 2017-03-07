@@ -1,10 +1,19 @@
 <h1><%= twist.name %></h1>
+<h2><%= twist.recipe %></h2>
+
+<% twist.comments.forEach((comment) => { %>
+  <br>
+  <strong><%= comment.createdBy.username %></strong>
+  <%= comment.content %>
+  <br>
+<% }); %>
+
 
 <% if(locals.isAuthenticated) { %>
-  <div>
+  <div><br>
     <h4>Leave a comment</h4>
-    <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/comments">
-      <textarea name="content" id="content" placeholder="Comment"></textarea>
+    <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/comments"><br>
+      <textarea name="content" id="content" placeholder="Comment"></textarea><br>
       <button class="button">Leave a comment</button>
     </form>
   </div>

@@ -17,24 +17,35 @@
 </div>
 <div>
   <hr>
-  <a href="/cocktails/<%= cocktail.id %>/twists/new">New Twist</a>
+  <button class="btn btn-success"><a href="/cocktails/<%= cocktail.id %>/twists/new">New Twist</a></button>
   <hr>
 </div>
 
 <div class="row">
     <% cocktail.twists.forEach((twist) => { %>
       <a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %> ">
-        <div class="col-sm-6">
-          <img class="img-fluid" src="/assets/images/<%= twist.image %>" alt="<%= twist.name %>">
+        <div class="col-sm-2">
+          <img class="img-fluid" src="<%= twist.imageSRC %>" alt="<%= twist.name %>">
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-2">
           <p><%= twist.name %></p>
           <p><%= twist.recipe %></p>
         </div>
       </a>
+</div>
+<div class="row">
       <% if(locals.isAuthenticated && twist.madeBy(user)) { %>
-        <a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/edit">Edit Twist</a>
+        <div>
+          <button class="btn btn-primary"><a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/edit">Edit</a></button>
+        </div>
+        <div>
+          <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+
+
       <% } %>
     <% }) %>
-
 </div>

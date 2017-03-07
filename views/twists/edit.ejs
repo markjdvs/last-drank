@@ -1,6 +1,6 @@
 <div class="row">
   <h4>Twist Edit</h4>
-  <form method="PUT" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>">
+  <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>" enctype="multipart/form-data">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" value="<%= twist.name %>">
 

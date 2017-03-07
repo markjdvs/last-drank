@@ -32,7 +32,10 @@ function twistsNew(req, res, next) {
 }
 
 function twistsCreate(req, res, next) {
+  if(req.file) req.body.image = req.file.key;
   req.body.createdBy = req.user ;
+
+  req.body = Object.assign({}, req.body);
 
   Cocktail
     .findById(req.params.id)
@@ -52,7 +55,7 @@ function twistsCreate(req, res, next) {
 function twistsShow(req, res, next) {
   Cocktail
     .findById(req.params.id)
-    .populate('comments.createdBy')
+    .populate('twists.comments.createdBy')
     .exec()
     .then((cocktail) => {
       if(!cocktail) return res.notFound();
@@ -75,13 +78,17 @@ function twistsEdit(req, res, next) {
 }
 
 function twistsUpdate(req, res, next) {
+  if(req.file) req.body.image = req.file.key;
+  req.body = Object.assign({}, req.body);
+
   Cocktail
     .findById(req.params.id)
+    .exec()
     .then((cocktail) => {
       if(!cocktail) return res.notFound();
-
+      const twist = cocktail.twists.id(req.params.twistId);
       for(const field in req.body) {
-        cocktail[field] = req.body[field];
+        twist[field] = req.body[field];
       }
 
       return cocktail.save();
@@ -114,13 +121,15 @@ function commentCreate(req, res, next) {
     .exec()
     .then((cocktail) => {
       if(!cocktail) return res.notFound();
-
-      cocktail.comments.push(req.body); // create an embedded record
-      // now we only need to save the hotel, not the comments model as we don't have one
+      const twist = cocktail.twists.id(req.params.twistId);
+      twist.comments.push(req.body);
       return cocktail.save();
 
     })
-    .then((cocktail, twist) => res.redirect(`/cocktails/${cocktail.id}/twists/${twist.id}`))
+    .then((cocktail) => {
+      const twist = cocktail.twists.id(req.params.twistId);
+      res.redirect(`/cocktails/${cocktail.id}/twists/${twist.id}`);
+    })
     .catch(next);
 }
 

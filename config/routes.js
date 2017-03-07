@@ -5,6 +5,7 @@ const sessions = require('../controllers/sessions');
 const cocktails = require('../controllers/cocktails');
 const oauth = require('../controllers/oauth');
 const secureRoute = require('../lib/secureRoute');
+const upload = require('../lib/upload');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
@@ -18,11 +19,11 @@ router.route('/cocktails/:id/twists/new')
   .get(secureRoute, cocktails.newTwist);
 
 router.route('/cocktails/:id/twists')
-  .post(secureRoute, cocktails.createTwist);
+  .post(secureRoute, upload.single('image'), cocktails.createTwist);
 
 router.route('/cocktails/:id/twists/:twistId')
   .get(secureRoute, cocktails.showTwist)
-  .put(secureRoute, cocktails.updateTwist)
+  .post(secureRoute, upload.single('image'), cocktails.updateTwist)
   .delete(secureRoute, cocktails.deleteTwist);
 
 router.route('/cocktails/:id/twists/:twistId/edit')

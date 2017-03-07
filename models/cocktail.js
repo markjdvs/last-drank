@@ -25,6 +25,12 @@ const twistSchema = new mongoose.Schema({
   otherIngredients: []
 });
 
+twistSchema.virtual('imageSRC')
+  .get(function getImageSRC(){
+    if(!this.image) return null;
+    return `https://s3-eu-west-1.amazonaws.com/wdi-25-full-stack-app/${this.image}`;
+  });
+
 twistSchema.methods.madeBy = function madeBy(user) {
   return this.createdBy.id === user.id;
 };
@@ -38,7 +44,7 @@ const cocktailSchema = new mongoose.Schema({
   recipe: { type: String },
   twists: [ twistSchema ],
   image: { type: String },
-  // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   mainSpirit: [],
   otherIngredients: []
 });
