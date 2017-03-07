@@ -22,13 +22,17 @@ function cocktailsShow(req, res, next) {
 }
 
 function twistsNew(req, res, next) {
-  return res.render('twists/new');
+  Cocktail
+    .findById(req.params.id)
+    .exec()
+    .then((cocktail) => {
+      return res.render('twists/new', { cocktail });
+    })
+    .catch(next);
 }
 
 function twistsCreate(req, res, next) {
   req.body.createdBy = req.user ;
-  console.log(req.params.id);
-  console.log(req.params.twistId);
 
   Cocktail
     .findById(req.params.id)
@@ -43,6 +47,7 @@ function twistsCreate(req, res, next) {
     .then((cocktail) => res.redirect(`/cocktails/${cocktail.id}`))
     .catch(next);
 }
+
 
 function twistsShow(req, res, next) {
   Cocktail
