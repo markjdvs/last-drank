@@ -21,8 +21,14 @@ function cocktailsShow(req, res, next) {
     .catch(next);
 }
 
+function twistsNew(req, res, next) {
+  return res.render('twists/new');
+}
+
 function twistsCreate(req, res, next) {
   req.body.createdBy = req.user ;
+  console.log(req.params.id);
+  console.log(req.params.twistId);
 
   Cocktail
     .findById(req.params.id)
@@ -38,12 +44,26 @@ function twistsCreate(req, res, next) {
     .catch(next);
 }
 
+function twistsShow(req, res, next) {
+  Cocktail
+    .findById(req.params.id)
+    .exec()
+    .then((cocktail) => {
+      if(!cocktail) return res.notFound();
+      const twist = cocktail.twists.id(req.params.twistId);
+      return res.render('twists/show', { cocktail, twist });
+    })
+    .catch(next);
+}
+
 function twistsEdit(req, res, next) {
   Cocktail
     .findById(req.params.id)
     .exec()
     .then((cocktail) => {
-      return res.render('cocktails/twists/edit', { cocktail });
+      if(!cocktail) return res.notFound();
+      const twist = cocktail.twists.id(req.params.twistId);
+      return res.render('twists/edit', { cocktail, twist });
     })
     .catch(next);
 }
@@ -63,9 +83,11 @@ function twistsDelete(req, res, next) {
 }
 
 module.exports = {
-  index: cocktailsIndex,
-  show: cocktailsShow,
+  indexCocktail: cocktailsIndex,
+  showCocktail: cocktailsShow,
+  newTwist: twistsNew,
   createTwist: twistsCreate,
   editTwist: twistsEdit,
+  showTwist: twistsShow,
   deleteTwist: twistsDelete
 };

@@ -8,6 +8,14 @@
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body>
+    <header>
+
+    </header>
+    <nav>
+      <a href="/login"></a>
+      <a href="/register"></a>
+      <a href="/cocktails"></a>
+    </nav>
     <% for(const type in messages) { %>
       <div class="<%= type %>">
         <h5><%= messages[type] %></h5>

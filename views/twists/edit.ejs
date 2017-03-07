@@ -1,13 +1,13 @@
 <div class="row">
   <h4>Twist Edit</h4>
-  <form method="POST" action="/cocktails/<%= cocktail.id %>/twists">
+  <form method="PUT" action="/cocktails/<%= cocktail.id %>/:twistId">
     <input type="text" name="name" placeholder="Name">
     <input type="text" name="image" placeholder="Image File">
     <textarea name="recipe" id="recipe" placeholder="Recipe"></textarea>
 
     <label for="sweet">Sweet</label>
     <select name="sweet">
-      <option type="number" name="sweet" value="<% cocktail.twists.id.sweet ">0</option>
+      <option type="number" name="sweet" value="0">0</option>
       <option type="number" name="sweet" value="1">1</option>
       <option type="number" name="sweet" value="2">2</option>
     </select>
@@ -23,6 +23,6 @@
       <option type="number" name="bitter" value="1">1</option>
       <option type="number" name="bitter" value="2">2</option>
     </select>
-    <button class="button">Add a Twist</button>
+    <button class="button">Update a Twist</button>
   </form>
 </div>

@@ -8,15 +8,20 @@ const secureRoute = require('../lib/secureRoute');
 router.get('/', (req, res) => res.render('statics/index'));
 
 router.route('/cocktails')
-  .get(secureRoute, cocktails.index);
+  .get(secureRoute, cocktails.indexCocktail);
 
 router.route('/cocktails/:id')
-  .get(secureRoute, cocktails.show);
+  .get(secureRoute, cocktails.showCocktail)
+  .get(secureRoute, cocktails.showTwist);
+
+router.route('/cocktails/:id/twists/new')
+  .get(secureRoute, cocktails.newTwist);
 
 router.route('/cocktails/:id/twists')
   .post(secureRoute, cocktails.createTwist);
 
 router.route('/cocktails/:id/twists/:twistId')
+  .get(secureRoute, cocktails.showTwist)
   .delete(secureRoute, cocktails.deleteTwist);
 
 router.route('/register')
