@@ -1,5 +1,13 @@
 <div class="row">
   <h4>Twist it!</h4>
+
+  <form class="tesco" action="index/">
+    <label for="mainIngredient"></label>
+    <input type="text" name="mainIngredient" value="">
+    <button>Search</button>
+  </form>
+
+
   <form method="POST" action="/cocktails/<%= cocktail.id %>/twists" enctype="multipart/form-data">
     <label for="name">Name</label>
     <input type="text" name="name" id="name">

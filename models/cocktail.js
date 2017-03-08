@@ -21,7 +21,11 @@ const twistSchema = new mongoose.Schema({
   bitter: { type: Number },
   comments: [ commentSchema ],
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  mainSpirit: [],
+  mainSpirit: {
+    name: { type: String },
+    image: { type: String },
+    price: { type: Number }
+  },
   otherIngredients: []
 });
 

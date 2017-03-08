@@ -4,25 +4,26 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <% if(locals.isAuthenticated) { %>
-
-            <a class="navbar-brand" href="/cocktails">New Drank.</a>
-
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="/users/<%= user.id %>">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
-          </li>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="navbar-brand" href="/cocktails">New Drank.</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/<%= user.id %>">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
         <% } else { %>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/register">Register</a>
-          </li>
-        <% } %>
-      </ul>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+          </ul>
+
+          <% } %>
 
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
