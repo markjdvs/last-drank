@@ -9,6 +9,9 @@ const upload = require('../lib/upload');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
+router.route('/user')
+  .get(secureRoute, cocktails.showUser);
+
 router.route('/cocktails')
   .get(secureRoute, cocktails.indexCocktail);
 
@@ -31,6 +34,9 @@ router.route('/cocktails/:id/twists/:twistId/edit')
 
 router.route('/cocktails/:id/twists/:twistId/comments')
   .post(secureRoute, cocktails.createComment);
+
+router.route('/cocktails/:id/twists/:twistId/comments/:commentId')
+  .delete(secureRoute, cocktails.deleteComment);
 
 router.route('/register')
   .get(registrations.new)

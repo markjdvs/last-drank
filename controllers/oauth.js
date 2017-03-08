@@ -45,7 +45,7 @@ function github(req, res, next) {
     req.session.isAuthenticated = true;
 
     req.flash('info', `Welcome back, ${user.username}!`);
-    res.redirect(`/`);
+    res.redirect(`/user`);
   })
   .catch(next);
 }
@@ -93,7 +93,7 @@ function facebook(req, res, next) {
    req.session.isAuthenticated = true;
 
    req.flash('info', `welcome back ${user.username}!`);
-   res.redirect('/');
+   res.redirect('/user');
  })
  .catch(next);
 }

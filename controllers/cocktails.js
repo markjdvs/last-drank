@@ -1,5 +1,9 @@
 const Cocktail = require('../models/cocktail');
 
+function userShow(req, res) {
+  res.render('users/show');
+}
+
 function cocktailsIndex(req, res, next) {
   Cocktail
     .find()
@@ -133,8 +137,29 @@ function commentCreate(req, res, next) {
     .catch(next);
 }
 
+function commentDelete(req, res, next) {
+  Cocktail
+    .findById(req.params.id)
+    .exec()
+    .then((cocktail) => {
+      if(!cocktail) res.notFound();
+      const twist = cocktail.twists.id(req.params.twistId);
+      console.log('TWIST', twist);
+      const comment = twist.comments.id(req.params.commentId);
+      console.log('COMMENT', comment);
+      comment.remove();
+      return cocktail.save();
+    })
+    .then((cocktail) => {
+      const twist = cocktail.twists.id(req.params.twistId);
+      res.redirect(`/cocktails/${cocktail.id}/twists/${twist.id}`);
+    })
+    .catch(next);
+}
+
 
 module.exports = {
+  showUser: userShow,
   indexCocktail: cocktailsIndex,
   showCocktail: cocktailsShow,
   newTwist: twistsNew,
@@ -143,5 +168,6 @@ module.exports = {
   updateTwist: twistsUpdate,
   showTwist: twistsShow,
   deleteTwist: twistsDelete,
-  createComment: commentCreate
+  createComment: commentCreate,
+  deleteComment: commentDelete
 };
