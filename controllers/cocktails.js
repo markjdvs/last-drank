@@ -117,7 +117,6 @@ function twistsDelete(req, res, next) {
 }
 
 function commentCreate(req, res, next) {
-
   req.body.createdBy = req.user;
 
   Cocktail
@@ -144,9 +143,7 @@ function commentDelete(req, res, next) {
     .then((cocktail) => {
       if(!cocktail) res.notFound();
       const twist = cocktail.twists.id(req.params.twistId);
-      console.log('TWIST', twist);
       const comment = twist.comments.id(req.params.commentId);
-      console.log('COMMENT', comment);
       comment.remove();
       return cocktail.save();
     })
