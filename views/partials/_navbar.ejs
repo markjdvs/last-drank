@@ -6,7 +6,7 @@
         <% if(locals.isAuthenticated) { %>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <a class="navbar-brand" href="/cocktails">New Drank.</a>
+              <a class="nav-link" href="/cocktails">New Drank.</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/users/<%= user.id %>">Profile</a>
@@ -25,9 +25,6 @@
 
           <% } %>
 
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
   </div>
 </nav>

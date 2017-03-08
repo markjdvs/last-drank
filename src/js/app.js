@@ -4,13 +4,16 @@ $(() => {
 
   const $form = $('.tesco');
   $form.on('submit', getIngredients);
-  $('.searchDropdown').on('click', 'option', grabIngredient, showMeasure);
+  $form.on('change', '.searchDropdown', () => {
+    console.log('hello');
+    grabIngredient();
+    showMeasure();
+  });
 
 
-  function grabIngredient(e) {
+  function grabIngredient() {
+    console.log($('.searchDropdown option:first-child').val());
     console.log('clicked on ingredient');
-    console.log($(e.target).html());
-    console.log($(e.target).val());
 
   }
 
@@ -36,9 +39,11 @@ $(() => {
       console.log(data);
       const $searchArray = data.uk.ghs.products.results;
       $('.searchDropdown').remove();
-      $form.append(`<select class="searchDropdown"></select>`);
+      $form.append(`<select class="searchDropdown" style="display:none;">
+        <option disabled selected>Please choose</option>
+      </select>`);
       $.each(($searchArray), (i) => {
-        $('.searchDropdown').hide().append(`<option>${$searchArray[i].name}</option>`).fadeIn();
+        $('.searchDropdown').append(`<option>${$searchArray[i].name}</option>`).fadeIn();
       });
 
     })

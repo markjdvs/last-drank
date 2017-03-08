@@ -5,10 +5,17 @@
   <div class="col-sm-6">
     <h2><%= cocktail.name %></h2>
     <p>
-      <h4><%= cocktail.sweet %></h4>
-      <h4><%= cocktail.tart %></h4>
-      <h4><%= cocktail.bitter %></h4>
-    </p>
+      <h4>
+        <% if(!!cocktail.sweet) { %>
+          <i class="fa fa-cubes" aria-hidden="true"></i>
+        <% } %>
+        <% if(!!cocktail.tart) { %>
+          <i class="fa fa-lemon-o" aria-hidden="true"></i>
+        <% } %>
+        <% if(!!cocktail.bitter) { %>
+          <i class="fa fa-coffee" aria-hidden="true"></i>
+        <% } %>
+      </h4>
     <p>
       <%= cocktail.recipe %>
     </p>

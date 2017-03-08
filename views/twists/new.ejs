@@ -1,41 +1,24 @@
 <div class="row">
-  <h4>Twist it!</h4>
-
-  <form class="tesco" action="index/">
-    <label for="mainIngredient"></label>
-    <input type="text" name="mainIngredient" value="">
+  <form class="tesco">
+    <label for="mainSpirit"></label>
+    <input type="text" name="mainSpirit" value="">
     <button>Search</button>
   </form>
 
 
   <form method="POST" action="/cocktails/<%= cocktail.id %>/twists" enctype="multipart/form-data">
+    <h4>Twist it!</h4>
+
     <label for="name">Name</label>
     <input type="text" name="name" id="name">
 
-    <label for="">Image</label>
-    <input type="file" name="image" id="image">
-
     <label for="recipe">Recipe</label>
     <textarea name="recipe" id="recipe"></textarea>
+    <label for="image">Image</label>
+    <input type="file" name="image" id="image">
 
-    <label for="sweet">Sweet</label>
-    <select name="sweet">
-      <option type="number" name="sweet" value="0">0</option>
-      <option type="number" name="sweet" value="1">1</option>
-      <option type="number" name="sweet" value="2">2</option>
-    </select>
-    <label for="tart">Tart</label>
-    <select name="tart">
-      <option type="number" name="tart" value="0">0</option>
-      <option type="number" name="tart" value="1">1</option>
-      <option type="number" name="tart" value="2">2</option>
-    </select>
-    <label for="bitter">Bitter</label>
-    <select name="bitter">
-      <option type="number" name="bitter" value="0">0</option>
-      <option type="number" name="bitter" value="1">1</option>
-      <option type="number" name="bitter" value="2">2</option>
-    </select>
+</div>
+<div class="row">
     <button class="button">Add a Twist</button>
   </form>
 </div>

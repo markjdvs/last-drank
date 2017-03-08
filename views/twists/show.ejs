@@ -1,5 +1,13 @@
-<h1><%= twist.name %></h1>
-<h2><%= twist.recipe %></h2>
+<div class="row">
+  <div class="col-sm-2">
+    <p><%= twist.name %></p>
+    <p><%= twist.recipe %></p>
+    <p><%= twist.createdBy.username %></p>
+  </div>
+  <div class="col-sm-2">
+    <img class="img-fluid" src="<%= twist.imageSRC %>" alt="<%= twist.name %>">
+  </div>
+</div>
 
 <% twist.comments.forEach((comment) => { %>
   <br>
@@ -17,9 +25,8 @@
 
 <% if(locals.isAuthenticated) { %>
   <div><br>
-    <h4>Leave a comment</h4>
-    <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/comments"><br>
-      <textarea name="content" id="content" placeholder="Comment"></textarea><br>
+    <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/comments">
+      <textarea name="content" id="content" placeholder="Pray do tell."></textarea><br>
       <button class="button">Leave a comment</button>
     </form>
   </div>

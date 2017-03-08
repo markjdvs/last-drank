@@ -1,16 +1,8 @@
-<% cocktails.forEach((cocktail) => { %>
-  <div class="row">
-      <div class="col-sm-6">
-        <a href="/cocktails/<%= cocktail.id %>"><img class="img-fluid" src="/assets/images/<%= cocktail.image %>" alt="<%= cocktail.name %>"></a>
+<div class="row">
+  <% cocktails.forEach((cocktail) => { %>
+      <div class="col-lg-3 col-md-6 col-sm-12 crop">
+        <a href="/cocktails/<%= cocktail.id %>"><h2><%= cocktail.name %></h2>
+        <img class="img-fluid" src="/assets/images/<%= cocktail.image %>" alt="<%= cocktail.name %>"></a>
       </div>
-    <div class="col-sm-6">
-      <a href="/cocktails/<%= cocktail.id %>"><h2><%= cocktail.name %></h2></a>
-      <p>
-        <h4><%= cocktail.sweet %></h4>
-        <h4><%= cocktail.tart %></h4>
-        <h4><%= cocktail.bitter %></h4>
-      </p>
-      <p><%= cocktail.recipe %></p>
-    </div>
-  </div>
-<% }) %>
+  <% }) %>
+</div>
