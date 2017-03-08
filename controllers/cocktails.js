@@ -1,7 +1,27 @@
 const Cocktail = require('../models/cocktail');
+const User = require('../models/user');
 
-function userShow(req, res) {
-  res.render('users/show');
+function userShow(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      return Cocktail
+        .find({ 'twists.createdBy': user.id })
+        .exec()
+        .then((cocktails) => {
+          const twists = [];
+          cocktails.forEach((cocktail) => {
+            cocktail.twists.forEach((twist) => {
+              if (twist.createdBy.toString() === user.id) {
+                twists.push(twist);
+              }
+            });
+          });
+          res.render('users/show', { user, twists });
+        });
+    })
+    .catch(next);
 }
 
 function cocktailsIndex(req, res, next) {
@@ -34,6 +54,8 @@ function twistsNew(req, res, next) {
     })
     .catch(next);
 }
+
+
 
 function twistsCreate(req, res, next) {
   if(req.file) req.body.image = req.file.key;

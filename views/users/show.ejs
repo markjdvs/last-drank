@@ -1,1 +1,13 @@
 <h1><%= user.username %></h1>
+<div class="row">
+  <% twists.forEach((twist) => { %>
+    <div class="col-sm-2">
+      <img class="img-fluid" src="<%= twist.imageSRC %>" alt="<%= twist.name %>">
+    </div>
+    <div class="col-sm-2">
+      <p><%= twist.name %></p>
+      <p><%= twist.recipe %></p>
+      <p><%= twist.createdBy.username %></p>
+    </div>
+  <% }) %>
+</div>

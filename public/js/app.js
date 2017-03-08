@@ -2,7 +2,4 @@
 
 console.log('JS Wagwan');
 
-$(function () {
-
-  $.ajax;
-});
+$(function () {});

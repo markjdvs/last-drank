@@ -45,7 +45,7 @@ function github(req, res, next) {
     req.session.isAuthenticated = true;
 
     req.flash('info', `Welcome back, ${user.username}!`);
-    res.redirect(`/user`);
+    res.redirect(`/users/${user.id}`);
   })
   .catch(next);
 }
@@ -69,12 +69,13 @@ function facebook(req, res, next) {
    return rp.get({
      url: 'https://graph.facebook.com/v2.5/me?fields=id,name,email,picture',
      qs: token,
+     redirect_uri: 'http://localhost:3000/oauth/facebook',
      json: true
    });
  })
  .then((profile) => {
    console.log(profile);
-   return User.findOne({email: profile.email })//first check their emails in case they already exist on our systm
+   return User.findOne({ email: profile.email })
      .then((user) => {
        if(!user) {
          user = new User({
@@ -93,7 +94,7 @@ function facebook(req, res, next) {
    req.session.isAuthenticated = true;
 
    req.flash('info', `welcome back ${user.username}!`);
-   res.redirect('/user');
+   res.redirect(`/users/${user.id}`);
  })
  .catch(next);
 }

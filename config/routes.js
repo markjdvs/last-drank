@@ -9,7 +9,7 @@ const upload = require('../lib/upload');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
-router.route('/user')
+router.route('/users/:id')
   .get(secureRoute, cocktails.showUser);
 
 router.route('/cocktails')
