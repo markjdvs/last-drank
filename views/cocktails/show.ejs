@@ -1,67 +1,71 @@
-<div class="row">
-  <div class="col-sm-6">
-    <img class="img-fluid" src="/assets/images/<%= cocktail.image %>" alt="<%= cocktail.name %>">
-  </div>
-  <div class="col-sm-6">
-    <h2><%= cocktail.name %></h2>
-    <p>
-      <h4>
-        <% if(cocktail.sweet) { %>
-          <i class="fa fa-cubes" aria-hidden="true"></i>
-        <% } %>
-        <% if(cocktail.tart) { %>
-          <i class="fa fa-lemon-o" aria-hidden="true"></i>
-        <% } %>
-        <% if(cocktail.bitter) { %>
-          <i class="fa fa-coffee" aria-hidden="true"></i>
-        <% } %>
-      </h4>
-    <p>
-      <%= cocktail.recipe %>
-    </p>
-    <p>
-      <h5>Made with ... </h5>
-      <a href="https://www.tesco.com/groceries/product/search/default.aspx?searchBox=<%= cocktail.mainSpirit.tpnb %>">
-        <h6><%= cocktail.mainSpirit.name %></h6>
-        <p><img class="img-fluid" src="<%= cocktail.mainSpirit.image %>" alt="<%= cocktail.mainSpirit.name %>"></p>
-        <p>£<%= cocktail.mainSpirit.price %></p>
-      </a>
-    </p>
+<div class="container">
+  <div class="row dropFromNav">
+
+    <div class="col-md-12 col-lg-6">
+      <img class="img-fluid" src="/assets/images/<%= cocktail.image %>" alt="<%= cocktail.name %>">
+    </div>
+
+    <div class="col-md-12 col-lg-3">
+      <h4><%= cocktail.name %></h4>
+      <p>
+        <h4>
+          <% if(cocktail.sweet) { %>
+            <i class="fa fa-cubes" aria-hidden="true"></i>
+          <% } %>
+          <% if(cocktail.tart) { %>
+            <i class="fa fa-lemon-o" aria-hidden="true"></i>
+          <% } %>
+          <% if(cocktail.bitter) { %>
+            <i class="fa fa-coffee" aria-hidden="true"></i>
+          <% } %>
+        </h4>
+      </p>
+      <p>
+        <%= cocktail.recipe %>
+      </p>
+    </div>
+
+    <div class="col-lg-3">
+      <p>
+        <h4>Made with ... </h4>
+        <a href="https://www.tesco.com/groceries/product/search/default.aspx?searchBox=<%= cocktail.mainSpirit.tpnb %>">
+          <h6><%= cocktail.mainSpirit.name %></h6>
+          <p><img class="img-fluid" src="<%= cocktail.mainSpirit.image %>" alt="<%= cocktail.mainSpirit.name %>"></p>
+          <p>£<%= cocktail.mainSpirit.price %></p>
+        </a>
+      </p>
+      <button class="btn btn-success"><a href="/cocktails/<%= cocktail.id %>/twists/new">New Twist</a></button>
+    </div>
 
   </div>
-
 </div>
 
-<div>
-  <hr>
-  <button class="btn btn-success"><a href="/cocktails/<%= cocktail.id %>/twists/new">New Twist</a></button>
-  <hr>
-</div>
-
-<div class="row">
-    <% cocktail.twists.forEach((twist) => { %>
-      <a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %> ">
-        <div class="col-sm-2">
+<div class="container">
+  <% cocktail.twists.forEach((twist) => { %>
+    <div class="row dropFromNav">
+      <div class="col-md-12 col-lg-6">
+        <a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>">
           <img class="img-fluid" src="<%= twist.imageSRC %>" alt="<%= twist.name %>">
-        </div>
-        <div class="col-sm-2">
-          <p><%= twist.name %></p>
-          <p><%= twist.recipe %></p>
-          <p><%= twist.createdBy.username %></p>
-        </div>
-      </a>
-</div>
-<div class="row">
-    <% if(locals.isAuthenticated && twist.madeBy(user)) { %>
-      <div>
-        <button class="btn btn-primary"><a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/edit">Edit</a></button>
+        </a>
       </div>
-      <div>
-        <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>">
-          <input type="hidden" name="_method" value="DELETE">
-          <button class="btn btn-danger">Delete</button>
-        </form>
+      <div class="col-md-12 col-lg-3">
+        <a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>">
+          <h4><%= twist.name %></h4>
+        </a>
+        <p><%= twist.recipe %></p>
+        <p>Made By - <%= twist.createdBy.username %></p>
       </div>
-    <% } %>
+      <div class="col-md-12 col-lg-3">
+        <% if(locals.isAuthenticated && twist.madeBy(user)) { %>
+          <button class="editBtn btn btn-primary"><a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/edit">Edit</a></button>
+          <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-danger">Delete</button>
+          </form>
+        <% } %>
+      </div>
+    </div>
+
   <% }) %>
+
 </div>

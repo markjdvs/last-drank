@@ -1,6 +1,6 @@
 @import "bootstrap/bootstrap";
 
-$background: #ffd6a2;
+$peach: #ffd6a2;
 
 *, button, a {
   font-family: 'Sansita', sans-serif;
@@ -8,15 +8,30 @@ $background: #ffd6a2;
 }
 
 nav {
-  background-color: #ffd6a2;
+  background-color: #ffd6a2!important;
 }
 
 li {
   list-style: none;
+  a {
+    font-size: 20px!important;
+  }
 }
 
 a, a:hover {
   text-decoration: none;
+}
+
+.reqAlerts {
+  background-color: $peach;
+}
+
+.dropFromNav {
+  margin: 5% auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+  border-bottom: 2px solid $peach;
 }
 
 div {
@@ -43,6 +58,12 @@ div {
     background-image: url('../assets/images/openingbar.jpg');
     background-size: cover;
     background-position: center;
+  }
+}
+
+.editBtn {
+  a {
+    color: #fff;
   }
 }
 

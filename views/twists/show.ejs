@@ -1,62 +1,68 @@
-<div class="row">
+<div class="container dropFromNav">
+  <div class="row">
 
-  <div class="col-sm-2">
-    <img class="img-fluid" src="<%= twist.imageSRC %>" alt="<%= twist.name %>">
+    <div class="col-lg-3">
+      <img class="img-fluid" src="<%= twist.imageSRC %>" alt="<%= twist.name %>">
+    </div>
+
+    <div class="col-lg-3">
+      <h5><%= twist.name %></h5>
+      <p><%= twist.recipe %></p>
+      <strong><%= twist.createdBy.username %></strong>
+    </div>
+
+    <div class="col-lg-3">
+      <h5>Made with ... </h5>
+      <a href="https://www.tesco.com/groceries/product/search/default.aspx?searchBox=<%= twist.mainSpirit.tpnb %>">
+        <h6><%= twist.mainSpirit.name %></h6>
+        <p><img class="img-fluid" src="<%= twist.mainSpirit.image %>" alt="<%= twist.mainSpirit.name %>"></p>
+        <p>£<%= twist.mainSpirit.price %></p>
+      </a>
+    </div>
+
+    <div class="col-lg-3">
+      <% twist.comments.forEach((comment) => { %>
+        <br>
+        <strong><%= comment.createdBy.username %></strong>
+        <%= comment.content %>
+        <br>
+        <% if(locals.isAuthenticated && comment.madeBy(user)) { %>
+          <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/comments/<%= comment.id %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <button>Delete</button>
+          </form>
+        <% } %>
+      <% }); %>
+      <% if(locals.isAuthenticated) { %>
+        <div><br>
+          <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/comments">
+            <textarea name="content" id="content" placeholder="Pray do tell."></textarea><br>
+            <button class="button">Leave a comment</button>
+          </form>
+        </div>
+      <% } %>
+
+    </div>
+
+
   </div>
 
-  <div class="col-sm-2">
-    <h5><%= twist.name %></h5>
-    <p><%= twist.recipe %></p>
-    <strong><%= twist.createdBy.username %></strong>
+
+  <div class="row">
+    <% if(locals.isAuthenticated && twist.madeBy(user)) { %>
+      <div>
+        <button class="btn btn-primary"><a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/edit">Edit</a></button>
+      </div>
+      <div>
+        <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    <% } %>
+
   </div>
 
-  <div class="col-sm-2">
-    <h5>Made with ... </h5>
-    <a href="https://www.tesco.com/groceries/product/search/default.aspx?searchBox=<%= twist.mainSpirit.tpnb %>">
-      <h6><%= twist.mainSpirit.name %></h6>
-      <p><img class="img-fluid" src="<%= twist.mainSpirit.image %>" alt="<%= twist.mainSpirit.name %>"></p>
-      <p>£<%= twist.mainSpirit.price %></p>
-    </a>
-  </div>
 
 
 </div>
-
-<% twist.comments.forEach((comment) => { %>
-  <br>
-  <strong><%= comment.createdBy.username %></strong>
-  <%= comment.content %>
-  <br>
-  <% if(locals.isAuthenticated && comment.madeBy(user)) { %>
-    <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/comments/<%= comment.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button>Delete</button>
-    </form>
-  <% } %>
-<% }); %>
-
-<div class="row">
-  <% if(locals.isAuthenticated && twist.madeBy(user)) { %>
-    <div>
-      <button class="btn btn-primary"><a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/edit">Edit</a></button>
-    </div>
-    <div>
-      <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button class="btn btn-danger">Delete</button>
-      </form>
-    </div>
-  <% } %>
-
-</div>
-
-
-
-<% if(locals.isAuthenticated) { %>
-  <div><br>
-    <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/comments">
-      <textarea name="content" id="content" placeholder="Pray do tell."></textarea><br>
-      <button class="button">Leave a comment</button>
-    </form>
-  </div>
-<% } %>

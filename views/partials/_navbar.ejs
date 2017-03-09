@@ -3,28 +3,33 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <% if(locals.isAuthenticated) { %>
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="/cocktails">New Drank.</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/<%= user.id %>">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
-            </li>
-        <% } else { %>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
-            </li>
-          </ul>
+    <% if(locals.isAuthenticated) { %>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/cocktails">New Drank.</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/<%= user.id %>">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+    <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Register</a>
+        </li>
+      </ul>
 
-          <% } %>
-
+    <% } %>
 
   </div>
+  <% for(const type in messages) { %>
+    <div class="<%= type %>">
+      <p class="reqAlerts"><%= messages[type] %></p>
+    </div>
+  <% } %>
+
 </nav>
