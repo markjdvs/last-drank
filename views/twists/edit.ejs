@@ -1,36 +1,40 @@
 <div class="row">
-  <h4>Twist Edit</h4>
-  <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>" enctype="multipart/form-data">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" value="<%= twist.name %>">
+  <div class="col-sm-6">
+    <form method="POST" action="/cocktails/<%= cocktail.id %>/twists" enctype="multipart/form-data">
 
-    <label for="">Image</label>
-    <input type="file" name="image" id="image" value="<%= twist.image %>">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" id="name" value="<%= twist.name %>">
+      </div>
 
-    <label for="recipe">Recipe</label>
-    <textarea name="recipe" id="recipe" value="<%= twist.recipe %>"></textarea>
+      <div class="form-group">
+       <label for="recipe">Recipe</label>
+       <textarea class="form-control" name="recipe" id="recipe" aria-describedby="recipeHelp" rows="4"><%= twist.recipe %></textarea>
+       <small id="recipeHelp" class="form-text text-muted">Please include ingredients and their measures.</small>
+      </div>
 
-    <label for="sweet">Sweet</label>
-    <select name="sweet">
-      <option selected type="number" name="sweet" value="<%= twist.sweet %>"></option>
-      <option type="number" name="sweet" value="0">0</option>
-      <option type="number" name="sweet" value="1">1</option>
-      <option type="number" name="sweet" value="2">2</option>
-    </select>
-    <label for="tart">Tart</label>
-    <select name="tart">
-      <option selected type="number" name="sweet" value="<%= twist.tart %>"></option>
-      <option type="number" name="tart" value="0">0</option>
-      <option type="number" name="tart" value="1">1</option>
-      <option type="number" name="tart" value="2">2</option>
-    </select>
-    <label for="bitter">Bitter</label>
-    <select name="bitter">
-      <option selected type="number" name="sweet" value="<%= twist.bitter %>"></option>
-      <option type="number" name="bitter" value="0">0</option>
-      <option type="number" name="bitter" value="1">1</option>
-      <option type="number" name="bitter" value="2">2</option>
-    </select>
-    <button class="button">Update a Twist</button>
-  </form>
+      <div class="form-group">
+        <label for="image">Upload an image</label>
+        <input type="file" class="form-control-file" name="image" id="image" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted">Delicious pics of delicious peeps' twists.</small>
+      </div>
+
+      <input type="hidden" name="mainSpirit[name]" value="">
+      <input type="hidden" name="mainSpirit[image]" value="">
+      <input type="hidden" name="mainSpirit[price]" value="">
+      <input type="hidden" name="mainSpirit[tpnb]" value"">
+
+      <button type="submit" class="btn btn-primary">Bop it.</button>
+    </form>
+  </div>
+
+  <div class="col-sm-6">
+    <h5>What's that badboy made with?</h5>
+    <form class="tesco">
+      <label for="mainSpirit"></label>
+      <input type="text" name="mainSpirit" value="">
+      <button class="searchTesco">Search</button>
+    </form>
+  </div>
+
 </div>
