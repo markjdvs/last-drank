@@ -21,6 +21,7 @@ $(function () {
     $('input[name="mainSpirit[name]"]').val(ingredientData.name);
     $('input[name="mainSpirit[image]"]').val(ingredientData.image);
     $('input[name="mainSpirit[price]"]').val(ingredientData.price);
+    $('input[name="mainSpirit[tpnb]"]').val(ingredientData.tpnb);
   }
 
   function getIngredients(e) {

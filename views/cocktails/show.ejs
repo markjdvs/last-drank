@@ -18,8 +18,16 @@
       </h4>
     <p>
       <%= cocktail.recipe %>
-      <%= cocktail.mainSpirit %>
     </p>
+    <p>
+      <h5>Made with ... </h5>
+      <a href="https://www.tesco.com/groceries/product/search/default.aspx?searchBox=<%= cocktail.mainSpirit.tpnb %>">
+        <h6><%= cocktail.mainSpirit.name %></h6>
+        <p><img class="img-fluid" src="<%= cocktail.mainSpirit.image %>" alt="<%= cocktail.mainSpirit.name %>"></p>
+        <p>£<%= cocktail.mainSpirit.price %></p>
+      </a>
+    </p>
+
   </div>
 
 </div>

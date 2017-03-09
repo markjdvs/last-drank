@@ -24,7 +24,8 @@ const twistSchema = new mongoose.Schema({
   mainSpirit: {
     name: { type: String },
     image: { type: String },
-    price: { type: Number }
+    price: { type: Number },
+    tpnb: { type: Number }
   },
   otherIngredients: []
 });
@@ -49,7 +50,12 @@ const cocktailSchema = new mongoose.Schema({
   twists: [ twistSchema ],
   image: { type: String },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  mainSpirit: [],
+  mainSpirit: {
+    name: { type: String },
+    image: { type: String },
+    price: { type: Number },
+    tpnb: { type: Number }
+  },
   otherIngredients: []
 });
 
