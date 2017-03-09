@@ -2,9 +2,8 @@
   <form class="tesco">
     <label for="mainSpirit"></label>
     <input type="text" name="mainSpirit" value="">
-    <button>Search</button>
+    <button class="searchTesco">Search</button>
   </form>
-
 
   <form method="POST" action="/cocktails/<%= cocktail.id %>/twists" enctype="multipart/form-data">
     <h4>Twist it!</h4>
@@ -16,6 +15,11 @@
     <textarea name="recipe" id="recipe"></textarea>
     <label for="image">Image</label>
     <input type="file" name="image" id="image">
+
+    <!--Hidden-->
+    <input type="hidden" name="mainSpirit[name]" value="">
+    <input type="hidden" name="mainSpirit[image]" value="">
+    <input type="hidden" name="mainSpirit[price]" value="">
 
 </div>
 <div class="row">

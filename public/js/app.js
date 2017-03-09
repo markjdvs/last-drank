@@ -1,24 +1,26 @@
 'use strict';
 
 console.log('JS Wagwan');
-
 $(function () {
 
   var $form = $('.tesco');
+  var searchArray = [];
   $form.on('submit', getIngredients);
-  $form.on('change', '.searchDropdown', function () {
-    console.log('hello');
-    grabIngredient();
-    showMeasure();
-  });
+  $form.on('change', '.searchDropdown', grabIngredient);
 
-  function grabIngredient() {
-    console.log($('.searchDropdown option:first-child').val());
+  function grabIngredient(e) {
+    e.preventDefault();
+    var ingredient = $('.searchDropdown').val();
+    console.log('this is the chosen option:', $('.searchDropdown').val());
     console.log('clicked on ingredient');
-  }
 
-  function showMeasure() {
-    $form.append('<button class="addIngredient">Add Ingredient</button>');
+    var ingredientData = searchArray.find(function (item) {
+      return item.name === ingredient;
+    });
+
+    $('input[name="mainSpirit[name]"]').val(ingredientData.name);
+    $('input[name="mainSpirit[image]"]').val(ingredientData.image);
+    $('input[name="mainSpirit[price]"]').val(ingredientData.price);
   }
 
   function getIngredients(e) {
@@ -36,11 +38,11 @@ $(function () {
       type: 'GET'
     }).then(function (data) {
       console.log(data);
-      var $searchArray = data.uk.ghs.products.results;
+      searchArray = data.uk.ghs.products.results;
       $('.searchDropdown').remove();
       $form.append('<select class="searchDropdown" style="display:none;">\n        <option disabled selected>Please choose</option>\n      </select>');
-      $.each($searchArray, function (i) {
-        $('.searchDropdown').append('<option>' + $searchArray[i].name + '</option>').fadeIn();
+      $.each(searchArray, function (i) {
+        $('.searchDropdown').append('<option>' + searchArray[i].name + '</option>').fadeIn();
       });
     }).fail(function (error) {
       console.log(error);
