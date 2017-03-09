@@ -1,5 +1,16 @@
 @import "bootstrap/bootstrap";
 
+$background: #ffd6a2;
+
+*, button, a {
+  font-family: 'Sansita', sans-serif;
+  font-color: #000;
+}
+
+nav {
+  background-color: #ffd6a2;
+}
+
 li {
   list-style: none;
 }
@@ -8,10 +19,44 @@ a, a:hover {
   text-decoration: none;
 }
 
-.opening-image {
-  background-image: url('../assets/images/openingbar.jpg');
-  background-size: cover;
-  background-position: center;
+div {
+  &.siteIntro {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/largeBar.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    h1 {
+      font-size: 36px;
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+    }
+  }
+}
+
+div {
+  &.sessionIntro {
+    height: 100vh;
+    background-image: url('../assets/images/openingbar.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.sessionForm {
+  width: 300px;
+  margin: 50px auto;
+  a {
+    margin: 10px;
+  }
+}
+
+.sessionBtn {
+  text-align: center;
+  margin: 20px;
 }
 
 .user-details {
@@ -26,4 +71,48 @@ a, a:hover {
 .crop img {
  height: auto;
  width: 400px;
+}
+
+div.form-group {
+  small {
+    &.text-muted {
+      color: #fff!important;
+    }
+  }
+}
+
+div.carousel {
+  background: #ffd6a2;
+  width: 100%;
+  margin: 0 auto;
+  .carousel-item {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    a {
+      font-size: 36px;
+      position: absolute;
+      bottom: 20%;
+      right: 20%;
+      color: #fff;
+    }
+  }
+}
+
+.square {
+  position: relative;
+  width: 50%;
+}
+
+.square:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }

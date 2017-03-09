@@ -30,7 +30,7 @@ User
         mainSpirit: {
           name: 'Makers Mark Bourbon 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/978/0085246342978/IDShot_90x90.jpg',
-          price: 29.0,
+          price: 29.00,
           tpnb: 66506119
         }
       }, {
@@ -43,7 +43,7 @@ User
         mainSpirit: {
           name: 'Jose Cuervo Gold Tequila 50Cl',
           image: 'http://img.tesco.com/Groceries/pi/124/7501035042124/IDShot_90x90.jpg',
-          price: 15.0,
+          price: 15.00,
           tpnb: 56118980
         }
       }, {
@@ -56,7 +56,7 @@ User
         mainSpirit: {
           name: 'Tesco Imperial Vodka 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/664/5018374066664/IDShot_90x90.jpg',
-          price: 10.5,
+          price: 10.50,
           tpnb: 50237911
         }
       }, {
@@ -69,7 +69,7 @@ User
         mainSpirit: {
           name: 'Havana Club 3 Year Old 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/231/8501110080231/IDShot_90x90.jpg',
-          price: 18.0,
+          price: 18.00,
           tpnb: 61447830
         }
       }, {
@@ -95,7 +95,7 @@ User
         mainSpirit: {
           name: 'Martin Miller Gin 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/388/0698929000388/IDShot_90x90.jpg',
-          price: 26.0,
+          price: 26.00,
           tpnb: 81782246
         }
       }, {
@@ -108,7 +108,7 @@ User
         mainSpirit: {
           name: 'Courvoisier V.S. Cognac 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/076/3049197110076/IDShot_90x90.jpg',
-          price: 22.0,
+          price: 22.00,
           tpnb: 50238708
         }
       }, {
@@ -130,7 +130,7 @@ User
         tart: 1,
         bitter: 0,
         recipe: 'Place the lime pieces and sugar in the cocktail shaker and crush with the muddler. Add cachaça and a handful of ice; shake well and pour, unstrained, into a rocks or old fashioned glass.',
-        image: 'caipirinha.png',
+        image: 'caipirinha.jpg',
         mainSpirit: {
           name: 'Wray And Nephew Overproof Rum 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/008/5024576010008/IDShot_90x90.jpg',
@@ -147,7 +147,7 @@ User
         mainSpirit: {
           name: 'Havana Club 3 Year Old 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/231/8501110080231/IDShot_90x90.jpg',
-          price: 18.0,
+          price: 18.00,
           tpnb: 61447830
         }
       }, {
@@ -160,7 +160,7 @@ User
         mainSpirit: {
           name: 'Bulleit Rye Whiskey 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/585/0082000765585/IDShot_90x90.jpg',
-          price: 25.0,
+          price: 25.00,
           tpnb: 81720292
         }
       }, {
@@ -173,7 +173,7 @@ User
         mainSpirit: {
           name: 'Appleton Estate Jamaica Rum 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/100/5024576189100/IDShot_90x90.jpg',
-          price: 21.0,
+          price: 21.00,
           tpnb: 51915257
         }
       }, {
@@ -182,11 +182,11 @@ User
         tart: 1,
         bitter: 1,
         recipe: 'Add gin, lemon and sugar to a Collins glass and stir to dissolve sugar (you can instead use simple syrup and make the process easier). Fill glass with large chunks of ice and top with chilled club soda. Insert straw and do what comes natural.',
-        image: 'tomcollins.png',
+        image: 'tomcollins.jpg',
         mainSpirit: {
           name: 'Bombay Sapphire Gin 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/006/5010677714006/IDShot_90x90.jpg',
-          price: 21.0,
+          price: 21.00,
           tpnb: 51924148
         }
       }, {
@@ -199,7 +199,7 @@ User
         mainSpirit: {
           name: 'Buffalo Trace Bourbon Whiskey 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/984/0080244009984/IDShot_90x90.jpg',
-          price: 23.0,
+          price: 23.00,
           tpnb: 74716158
         }
       }, {
@@ -212,7 +212,7 @@ User
         mainSpirit: {
           name: 'Bloom London Dry Gin 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/249/5010296169249/IDShot_90x90.jpg',
-          price: 24.0,
+          price: 24.00,
           tpnb: 72618646
         }
       }, {
@@ -225,7 +225,7 @@ User
         mainSpirit: {
           name: 'Wild Turkey Bourbon Whiskey 70Cl',
           image: 'http://img.tesco.com/Groceries/pi/012/8000040500012/IDShot_90x90.jpg',
-          price: 23.0,
+          price: 23.00,
           tpnb: 74102049
         }
       }]);

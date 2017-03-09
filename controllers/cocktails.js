@@ -55,8 +55,6 @@ function twistsNew(req, res, next) {
     .catch(next);
 }
 
-
-
 function twistsCreate(req, res, next) {
   if(req.file) req.body.image = req.file.key;
   req.body.createdBy = req.user ;
@@ -76,7 +74,6 @@ function twistsCreate(req, res, next) {
     .then((cocktail) => res.redirect(`/cocktails/${cocktail.id}`))
     .catch(next);
 }
-
 
 function twistsShow(req, res, next) {
   Cocktail
@@ -122,7 +119,6 @@ function twistsUpdate(req, res, next) {
     .then((cocktail) => res.redirect(`/cocktails/${cocktail.id}`))
     .catch(next);
 }
-
 
 function twistsDelete(req, res, next) {
   Cocktail
@@ -175,7 +171,6 @@ function commentDelete(req, res, next) {
     })
     .catch(next);
 }
-
 
 module.exports = {
   showUser: userShow,

@@ -7,6 +7,7 @@ $(function () {
   var searchArray = [];
   $form.on('submit', getIngredients);
   $form.on('change', '.searchDropdown', grabIngredient);
+  $('.carousel').carousel();
 
   function grabIngredient(e) {
     e.preventDefault();

@@ -6,13 +6,13 @@
     <h2><%= cocktail.name %></h2>
     <p>
       <h4>
-        <% if(!!cocktail.sweet) { %>
+        <% if(cocktail.sweet) { %>
           <i class="fa fa-cubes" aria-hidden="true"></i>
         <% } %>
-        <% if(!!cocktail.tart) { %>
+        <% if(cocktail.tart) { %>
           <i class="fa fa-lemon-o" aria-hidden="true"></i>
         <% } %>
-        <% if(!!cocktail.bitter) { %>
+        <% if(cocktail.bitter) { %>
           <i class="fa fa-coffee" aria-hidden="true"></i>
         <% } %>
       </h4>
@@ -30,11 +30,6 @@
 
   </div>
 
-</div>
-
-<div>
-  <%# use tesco products and prices here %>
-  <ul></ul>
 </div>
 
 <div>
@@ -57,18 +52,16 @@
       </a>
 </div>
 <div class="row">
-      <% if(locals.isAuthenticated && twist.madeBy(user)) { %>
-        <div>
-          <button class="btn btn-primary"><a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/edit">Edit</a></button>
-        </div>
-        <div>
-          <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-danger">Delete</button>
-          </form>
-        </div>
-
-
-      <% } %>
-    <% }) %>
+    <% if(locals.isAuthenticated && twist.madeBy(user)) { %>
+      <div>
+        <button class="btn btn-primary"><a href="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>/edit">Edit</a></button>
+      </div>
+      <div>
+        <form method="POST" action="/cocktails/<%= cocktail.id %>/twists/<%= twist.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    <% } %>
+  <% }) %>
 </div>

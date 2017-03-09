@@ -1,21 +1,28 @@
-<div class="opening-image">
-  <h1>Login</h1>
+<div class="sessionIntro">
+  <div class="container">
+    <div class="row">
+      <div class="sessionForm col-sm-6">
 
-  <form method="POST" action="/login">
-    <div>
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" required>
+        <form method="POST" action="/login">
+          <div class="form-group">
+            <label for="email"></label>
+            <input type="text" class="form-control" name="email" id="email" placeholder="Your email">
+          </div>
+          <div class="form-group">
+            <label for="password"></label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+          </div>
+          <div class="sessionBtn">
+            <button class="btn btn-success">Login</button>
+          </div>
+          <div class="sessionBtn">
+            <a href="<%= oauth.facebook.getLoginURL() %>" class="fblogin oauth btn btn-primary"><i class="fa fa-facebook-official" aria-hidden="true"></i>   Login with Facebook</a>
+
+            <a href="<%= oauth.github.getLoginURL() %>" class="gtlogin oauth btn btn-secondary"><i class="fa fa-github" aria-hidden="true"></i>   Login with Github</a>
+          </div>
+        </form>
+
+      </div>
     </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" required>
-    </div>
-
-    <button class="button">Login</button>
-
-  </form>
-
-  <br>
-  <button><a href="<%= oauth.facebook.getLoginURL() %>">Login with Facebook</a></button>
-  <button><a href="<%= oauth.github.getLoginURL() %>">Login with Github</a></button>
+  </div>
 </div>

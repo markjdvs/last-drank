@@ -6,18 +6,9 @@ const userSchema = new mongoose.Schema({
   username: { type: String },
   email: { type: String },
   password: { type: String },
-  profileImage: { type: String },
   facebookId: { type: String },
   githubId: { type: Number }
 });
-
-userSchema
-  .virtual('imageSRC')
-  .get(function getImageSRC() {
-    if(!this.profileImage) return null;
-    if(this.profileImage.match(/^http/)) return this.profileImage;
-    return `https://s3-eu-west-1.amazonaws.com/wdi-25-full-stack-app/${this.profileImage}`;
-  });
 
 userSchema
   .virtual('passwordConfirmation')
