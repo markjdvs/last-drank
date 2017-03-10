@@ -12,7 +12,7 @@
       <% cocktails.forEach((cocktail) => { %>
           <div class="carousel-item <% if(cocktail===cocktails[0]) { %> active <% } %>" style='background-image: url("/assets/images/<%= cocktail.image %>")'>
             <a href="/cocktails/<%= cocktail.id %>" class="d-block img-fluid">
-              <h2><%= cocktail.name %></h2>
+              <h2 class='cocktailName'><%= cocktail.name %></h2>
             </a>
           </div>
       <% }) %>
