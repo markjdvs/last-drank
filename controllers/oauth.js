@@ -44,7 +44,7 @@ function github(req, res, next) {
     req.session.userId = user.id;
     req.session.isAuthenticated = true;
 
-    req.flash('info', `Welcome back, ${user.username}!`);
+    req.flash('success', `Welcome, ${user.username}!`);
     res.redirect(`/users/${user.id}`);
   })
   .catch(next);
@@ -93,7 +93,7 @@ function facebook(req, res, next) {
    req.session.userId = user.id;
    req.session.isAuthenticated = true;
 
-   req.flash('info', `welcome back ${user.username}!`);
+   req.flash('success', `Welcome ${user.username}!`);
    res.redirect(`/users/${user.id}`);
  })
  .catch(next);

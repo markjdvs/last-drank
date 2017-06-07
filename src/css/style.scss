@@ -2,8 +2,6 @@
 @import "variables/_fonts";
 @import "variables/_colors";
 
-$peach: #ffd6a2;
-
 *, button, a {
   font-family: $header-font;
   font-color: #000;
@@ -12,6 +10,28 @@ $peach: #ffd6a2;
 
 nav {
   background-color: $third-color !important;
+}
+
+.success{
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: #98FB98;
+  padding: 10px;
+  p {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.danger{
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: #ff6961;
+  padding: 10px;
+  p {
+    margin: 0;
+    text-align: center;
+  }
 }
 
 li {
@@ -80,6 +100,7 @@ div {
 
 div {
   &.sessionIntro {
+    padding: 10px;
     height: 100vh;
     background-image: url('../assets/images/openingbar.jpg');
     background-size: cover;

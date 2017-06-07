@@ -1,13 +1,22 @@
 'use strict';
 
-console.log('JS Wagwan');
+console.log('js');
 $(function () {
+  console.log('jQuery');
 
   var $form = $('.tesco');
   var searchArray = [];
+
   $form.on('submit', getIngredients);
   $form.on('change', '.searchDropdown', grabIngredient);
+
   $('.carousel').carousel();
+
+  function getIngredients(e) {
+    e.preventDefault();
+    var query = $form.find('input').val();
+    makeAjaxCall(query);
+  }
 
   function grabIngredient(e) {
     e.preventDefault();
@@ -25,12 +34,6 @@ $(function () {
     $('input[name="mainSpirit[tpnb]"]').val(ingredientData.tpnb);
   }
 
-  function getIngredients(e) {
-    e.preventDefault();
-    var query = $form.find('input').val();
-    makeAjaxCall(query);
-  }
-
   function makeAjaxCall(query) {
     $.ajax({
       url: 'https://dev.tescolabs.com/grocery/products/?query=' + query + '&offset=0&limit=10',
@@ -42,9 +45,9 @@ $(function () {
       console.log(data);
       searchArray = data.uk.ghs.products.results;
       $('.searchDropdown').remove();
-      $form.append('<select class="searchDropdown" style="display:none;">\n        <option disabled selected>Please choose</option>\n      </select>');
+      $form.append('\n        <select class="searchDropdown" style="display:none;">\n        <option disabled selected>Please choose</option>\n        </select>\n      ');
       $.each(searchArray, function (i) {
-        $('.searchDropdown').append('<option>' + searchArray[i].name + '</option>').fadeIn();
+        $('.searchDropdown').append('\n          <option>' + searchArray[i].name + '</option>\n        ').fadeIn();
       });
     }).fail(function (error) {
       console.log(error);

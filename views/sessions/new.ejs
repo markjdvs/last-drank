@@ -1,5 +1,11 @@
 <div class="sessionIntro">
   <div class="container">
+    <% for(const type in messages) { %>
+      <div class="<%= type %>">
+        <p><%= messages[type] %></p>
+      </div>
+    <% } %>
+
     <div class="row">
       <div class="sessionForm col-sm-6">
 
