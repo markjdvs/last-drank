@@ -69,7 +69,7 @@ function facebook(req, res, next) {
    return rp.get({
      url: 'https://graph.facebook.com/v2.5/me?fields=id,name,email,picture',
      qs: token,
-     redirect_uri: 'http://localhost:3000/oauth/facebook',
+     redirect_uri: 'https://last-drank.herokuapp.com/oauth/facebook',
      json: true
    });
  })
