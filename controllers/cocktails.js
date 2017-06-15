@@ -57,6 +57,8 @@ function twistsNew(req, res, next) {
 
 function twistsCreate(req, res, next) {
   if(req.file) req.body.image = req.file.key;
+
+  console.log(req.user);
   req.body.createdBy = req.user ;
 
   req.body = Object.assign({}, req.body);
