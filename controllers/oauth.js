@@ -75,7 +75,7 @@ function facebook(req, res, next) {
  })
  .then((profile) => {
    console.log(profile);
-   return User.findOne({ email: profile.email })
+   return User.findOne({ facebookId: profile.id })
      .then((user) => {
        if(!user) {
          user = new User({
