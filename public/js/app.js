@@ -1,6 +1,7 @@
 'use strict';
 
 console.log('js');
+
 $(function () {
   console.log('jQuery');
 
@@ -9,6 +10,22 @@ $(function () {
 
   $form.on('submit', getIngredients);
   $form.on('change', '.searchDropdown', grabIngredient);
+
+  // function scroll() {
+  //   if($('input.scrolling').val() === 'scrollingAllowed') {
+  //     $('body').off('mousewheel');
+  //   } else {
+  //     $('body').on({
+  //       'mousewheel': function(e) {
+  //         if (e.target.id === 'el') return;
+  //         e.preventDefault();
+  //         e.stopPropagation();
+  //       }
+  //     });
+  //   }
+  // }
+
+  // $('input.scrolling').on('change', scroll);
 
   $('.carousel').carousel();
 

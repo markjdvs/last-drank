@@ -1,4 +1,5 @@
 console.log('js');
+
 $(() => {
   console.log('jQuery');
 
@@ -7,6 +8,22 @@ $(() => {
 
   $form.on('submit', getIngredients);
   $form.on('change', '.searchDropdown', grabIngredient);
+
+  // function scroll() {
+  //   if($('input.scrolling').val() === 'scrollingAllowed') {
+  //     $('body').off('mousewheel');
+  //   } else {
+  //     $('body').on({
+  //       'mousewheel': function(e) {
+  //         if (e.target.id === 'el') return;
+  //         e.preventDefault();
+  //         e.stopPropagation();
+  //       }
+  //     });
+  //   }
+  // }
+
+  // $('input.scrolling').on('change', scroll);
 
   $('.carousel').carousel();
 

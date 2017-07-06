@@ -158,17 +158,22 @@ div.carousel {
   background: #ffd6a2;
   width: 100%;
   margin: 0 auto;
-  .carousel-item {
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    a {
-      font-size: 36px;
-      position: absolute;
-      bottom: 20%;
-      right: 20%;
-      color: #fff;
+  height: calc(100vh - 66px);
+
+  .carousel-inner {
+    height: 100%;
+
+    .carousel-item {
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      a {
+        font-size: 36px;
+        position: absolute;
+        bottom: 20%;
+        right: 20%;
+        color: #fff;
+      }
     }
   }
 }

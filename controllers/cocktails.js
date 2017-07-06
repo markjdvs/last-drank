@@ -25,6 +25,8 @@ function userShow(req, res, next) {
 }
 
 function cocktailsIndex(req, res, next) {
+  
+
   Cocktail
     .find()
     .populate('createdBy')
