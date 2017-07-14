@@ -29,6 +29,8 @@ These twists can be commented on and recommended for anyone who tried it.
 
 - [Express Sessions](https://www.npmjs.com/package/express-sessions) is used to provide authentication, [bcrypt](https://www.npmjs.com/package/bcrypt) for password hashing and oAuth authorisation via Facebook and Github.
 
+- [Bootstrap V4](https://v4-alpha.getbootstrap.com/getting-started/introduction/) was used to position the app.
+
 - Styles are written in [SASS](http://sass-lang.com/documentation/file.SASS_REFERENCE.html) and [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/API.md) is used as a taskrunner.
 
 - I used [Babel](https://babeljs.io) to compile to ES5.
